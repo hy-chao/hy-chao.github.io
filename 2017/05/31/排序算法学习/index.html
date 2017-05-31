@@ -90,22 +90,16 @@
 
 
 
-<meta name="description" content="1、比较排序冒泡排序
-基本思想：两两比较相邻记录的关键字，如果反序则交换。时间复杂度最好为O(n)，最坏的情况是O(n^2)。空间复杂度O(1), 稳定性算法。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445//升序排列#include&amp;lt;iostream&amp;gt;#include">
+<meta name="description" content="总结排序算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法学习">
 <meta property="og:url" content="http://yoursite.com/2017/05/31/排序算法学习/index.html">
 <meta property="og:site_name" content="orange">
-<meta property="og:description" content="1、比较排序冒泡排序
-基本思想：两两比较相邻记录的关键字，如果反序则交换。时间复杂度最好为O(n)，最坏的情况是O(n^2)。空间复杂度O(1), 稳定性算法。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445//升序排列#include&amp;lt;iostream&amp;gt;#include">
-<meta property="og:updated_time" content="2017-05-31T06:08:10.617Z">
+<meta property="og:description" content="总结排序算法">
+<meta property="og:updated_time" content="2017-05-31T12:31:32.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法学习">
-<meta name="twitter:description" content="1、比较排序冒泡排序
-基本思想：两两比较相邻记录的关键字，如果反序则交换。时间复杂度最好为O(n)，最坏的情况是O(n^2)。空间复杂度O(1), 稳定性算法。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445//升序排列#include&amp;lt;iostream&amp;gt;#include">
+<meta name="twitter:description" content="总结排序算法">
 
 
 
@@ -325,7 +319,8 @@
       
 
       
-        <h2 id="1、比较排序"><a href="#1、比较排序" class="headerlink" title="1、比较排序"></a>1、比较排序</h2><p><strong>冒泡排序</strong></p>
+        <h2 id="总结排序算法"><a href="#总结排序算法" class="headerlink" title="总结排序算法"></a>总结排序算法</h2><a id="more"></a>
+<h2 id="1、比较排序"><a href="#1、比较排序" class="headerlink" title="1、比较排序"></a>1、比较排序</h2><p><strong>冒泡排序</strong></p>
 <p>基本思想：两两比较相邻记录的关键字，如果反序则交换。<br>时间复杂度最好为O(n)，最坏的情况是O(n^2)。空间复杂度O(1), 稳定性算法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">//升序排列</div><div class="line">#include&lt;iostream&gt;</div><div class="line">#include&lt;vector&gt;</div><div class="line">using namespace std;</div><div class="line">//两数交换函数</div><div class="line">void swap(int &amp;a, int &amp;b)</div><div class="line">&#123;</div><div class="line">    int tmp = a;</div><div class="line">    a = b;</div><div class="line">    b = tmp;</div><div class="line">&#125;</div><div class="line">//基础版</div><div class="line">void BubbleSort(vector&lt;int&gt; &amp;array)</div><div class="line">&#123;</div><div class="line">    for(int i = 0; i &lt; array.size(); i++)</div><div class="line">    &#123;</div><div class="line">        for(int j = 1; j &lt; array.size(); j++)</div><div class="line">        &#123;</div><div class="line">            if(array[j-1] &gt; array[j])</div><div class="line">            &#123;</div><div class="line">                swap(array[j-1], array[j]);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">//改进版</div><div class="line">//思路：记录一轮交换后标记的最后位置，下次从头遍历到这个位置就好。</div><div class="line">void BubbleSort_v2(vector&lt;int&gt; &amp;array)</div><div class="line">&#123;</div><div class="line">    int k;</div><div class="line">    int flag = array.size();</div><div class="line">    while(flag &gt; 0)</div><div class="line">    &#123;</div><div class="line">        k = flag;</div><div class="line">        flag = 0;</div><div class="line">        for(int i = 1; i &lt; k; i++)</div><div class="line">        &#123;</div><div class="line">            if(array[i-1] &gt; array[i])</div><div class="line">            &#123;</div><div class="line">                swap(array[i-1], array[i]);</div><div class="line">                flag = i;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><strong>直接插入排序</strong></p>
@@ -533,11 +528,11 @@
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://www.cnblogs.com/shellfishsplace/" target="_blank" title="csdn">
+                <a href="http://www.cnblogs.com/shellfishsplace/" target="_blank" title="cnblogs">
                   
                     <i class="fa fa-fw fa-grav"></i>
                   
-                  csdn
+                  cnblogs
                 </a>
               </span>
             
@@ -547,6 +542,15 @@
                     <i class="fa fa-fw fa-weibo"></i>
                   
                   Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="address--hycjhonstock@gmail.com" target="_blank" title="email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  email
                 </a>
               </span>
             
@@ -574,7 +578,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、比较排序"><span class="nav-number">1.</span> <span class="nav-text">1、比较排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、非比较排序"><span class="nav-number">2.</span> <span class="nav-text">2、非比较排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、排序算法的稳定性"><span class="nav-number">3.</span> <span class="nav-text">3、排序算法的稳定性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结排序算法"><span class="nav-number">1.</span> <span class="nav-text">总结排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、比较排序"><span class="nav-number">2.</span> <span class="nav-text">1、比较排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、非比较排序"><span class="nav-number">3.</span> <span class="nav-text">2、非比较排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、排序算法的稳定性"><span class="nav-number">4.</span> <span class="nav-text">3、排序算法的稳定性</span></a></li></ol></div>
             
 
           </div>
