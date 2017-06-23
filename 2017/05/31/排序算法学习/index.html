@@ -111,7 +111,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/31/排序算法学习/index.html">
 <meta property="og:site_name" content="orange">
 <meta property="og:description" content="总结排序算法">
-<meta property="og:updated_time" content="2017-06-01T09:01:48.593Z">
+<meta property="og:updated_time" content="2017-06-23T03:26:15.551Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法学习">
 <meta name="twitter:description" content="总结排序算法">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  2,696
+                  3,048
                 </span>
               
 
@@ -409,7 +409,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  11
+                  13
                 </span>
               
             </div>
@@ -475,6 +475,18 @@
 <li>在实际的应用中，我们交换的不一定只是一个整数，而可能是一个很大的对象，交换元素存在一定的开销；</li>
 <li>不稳定排序是无法完成基数排序。</li>
 </ul>
+<hr>
+<h2 id="4、排序算法的选择"><a href="#4、排序算法的选择" class="headerlink" title="4、排序算法的选择"></a>4、排序算法的选择</h2><ul>
+<li><p>若n较小(如n≤50)，可采用直接插入或直接选择排序。当记录规模较小时，直接插入排序较好；否则因为直接选择移动的记录数少于直接插人，应选直接选择排序为宜。</p>
+</li>
+<li><p>若文件初始状态基本有序(指正序)，则应选用直接插人、冒泡或随机的快速排序为宜。</p>
+</li>
+<li><p>若n较大，则应采用时间复杂度为O(nlgn)的排序方法：快速排序、堆排序或归并排序。</p>
+<p>快速排序是目前基于比较的内部排序中被认为是最好的方法，当待排序的关键字是随机分布时，快速排序的平均时间最短；</p>
+<p>堆排序所需的辅助空间少于快速排序，并且不会出现快速排序可能出现的最坏情况。这两种排序都是不稳定的；</p>
+<p>若要求排序稳定，则可选用归并排序。但从单个记录起进行两两归并的排序算法并不值得提倡，通常可以将它和直接插入排序结合在一起使用。先利用直接插入排序求得较长的有序子文件，然后再两两归并之。因为直接插入排序是稳定 的，所以改进后的归并排序仍是稳定的。</p>
+</li>
+</ul>
 
       
     </div>
@@ -526,6 +538,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/22/堆排序详细分析/" rel="prev" title="堆排序详细分析">
+                堆排序详细分析 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -599,7 +615,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -703,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结排序算法"><span class="nav-number">1.</span> <span class="nav-text">总结排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、比较排序"><span class="nav-number">2.</span> <span class="nav-text">1、比较排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接插入排序"><span class="nav-number">2.2.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单选择排序"><span class="nav-number">2.3.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">2.4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">2.5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">2.6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">2.7.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、非比较排序"><span class="nav-number">3.</span> <span class="nav-text">2、非比较排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">3.1.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">3.2.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">3.3.</span> <span class="nav-text">基数排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、排序算法的稳定性"><span class="nav-number">4.</span> <span class="nav-text">3、排序算法的稳定性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#总结排序算法"><span class="nav-number">1.</span> <span class="nav-text">总结排序算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1、比较排序"><span class="nav-number">2.</span> <span class="nav-text">1、比较排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">2.1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#直接插入排序"><span class="nav-number">2.2.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#简单选择排序"><span class="nav-number">2.3.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">2.4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">2.5.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">2.6.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">2.7.</span> <span class="nav-text">快速排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、非比较排序"><span class="nav-number">3.</span> <span class="nav-text">2、非比较排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">3.1.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">3.2.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">3.3.</span> <span class="nav-text">基数排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、排序算法的稳定性"><span class="nav-number">4.</span> <span class="nav-text">3、排序算法的稳定性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、排序算法的选择"><span class="nav-number">5.</span> <span class="nav-text">4、排序算法的选择</span></a></li></ol></div>
             
 
           </div>
