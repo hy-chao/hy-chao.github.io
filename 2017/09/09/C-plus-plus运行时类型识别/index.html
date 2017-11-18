@@ -111,7 +111,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/09/C-plus-plus运行时类型识别/index.html">
 <meta property="og:site_name" content="orange">
 <meta property="og:description" content="运行时类型识别运行时类型识别：通过运行时类型识别（RTTI），程序能够使用基类的指针或引用来检索这些指针或引用所指对象的实际派生类型。">
-<meta property="og:updated_time" content="2017-11-08T12:43:42.228Z">
+<meta property="og:updated_time" content="2017-11-18T05:15:26.395Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++运行时类型识别">
 <meta name="twitter:description" content="运行时类型识别运行时类型识别：通过运行时类型识别（RTTI），程序能够使用基类的指针或引用来检索这些指针或引用所指对象的实际派生类型。">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  123
+                  834
                 </span>
               
 
@@ -387,7 +387,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -412,7 +412,24 @@
 <li>typeid操作符，返回指针或引用所指对象的实际类型。</li>
 <li>dynamic_cast操作符，将基类类型的指针或引用安全的转换为派生类型的指针或引用。</li>
 </ul>
-<p>未完待续……</p>
+<p><strong>注解：</strong> 这些操作符只为带有一个或多个虚函数的类返回动态类型信息，对于其他类型，返回静态（即编译时）类型的信息。</p>
+<p>对于带虚函数的类，在运行时执行RTTI操作符，但对于其他类型，在编译时计算RTTI操作符。</p>
+<p><strong>dynamic_cast操作符</strong></p>
+<p>可以使用dynamic_cast操作符将基类类型对象的引用或指针转换为同一继承层次中其他类型的引用或指针。与dynamic_cast一起使用的指针必须是有效的（它必须为0或指向一个对象）。</p>
+<p>不同于其他的强制类型转换，dynamic_cast涉及运行时类型检查。如果绑定到引用或指针的对象不是目标类型的对象，则dynamic_cast失败。<strong>如果转换到指针类型的dynamic_cast 失败，返回值为0；如果转换到引用类型的dynamic_cast失败，则抛出一个异常。</strong> （在进行动态强制类型转换后，使用指针或引用之前需要进行判断，确保转换已经成功）</p>
+<p>举个例子：假定Base是至少带一个虚函数的类，并且Derived类派生于Base类。如果有一个名为basePtr的指向Base的指针，在运行时将basePtr强制转换为指向Derived的指针。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(Derived *derivedPtr = <span class="keyword">dynamic_cast</span>&lt;Derived*&gt; (basrPtr))</div><div class="line">&#123;</div><div class="line">  <span class="comment">//use the Derived object to which derivedPtr points</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">&#123;</div><div class="line">  <span class="comment">//BasePtr points at a Base object</span></div><div class="line">  <span class="comment">//use the Base object to which basrPtr points </span></div><div class="line">&#125;</div><div class="line"><span class="comment">//在运行时，如果basrPtr实际指向Derived对象，则转换将成功，</span></div><div class="line"><span class="comment">//并且derivedPtr将被初始化为指向basePtr所指的Drive的对象；</span></div><div class="line"><span class="comment">//否则，转换的结果是0，意味着将derivedPtr置为0，并且if中的条件失败。</span></div></pre></td></tr></table></figure>
+<p>这样写的好处：</p>
+<ul>
+<li>通过检查derivedPtr的值，if内部的代码知道它是在操作Derived对象，该代码使用Derived的操作是安全的。如果dynamic_cast因basePtr引用了Base对象而失败，则else子句进行适应于Base的处理来代替。</li>
+<li>不可能在dynamic_cast和测试转换结果之间插入代码，因此，不可能在测试转换是否成功之前不经意地使用derivedPtr。</li>
+<li>在if外部不能访问该指针，如果转换失败，则在后面的忘了测试的地方，未绑定的指针是不可用的。</li>
+</ul>
+<p><strong>使用dynamic_cast和引用类型</strong></p>
+<p>基于上面的例子，使用dynamic_cast将基类引用转换为派生类引用。这种dynamic_cast 操作的形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dynamic_cast</span>&lt; Type&amp; &gt; (val)</div><div class="line"><span class="comment">//这里，Type是转换的目标类型，而val是基类类型的对象。</span></div></pre></td></tr></table></figure>
+<p>只有当val实际引用一个Type类型对象，或者val是一个Type派生类型的对象的时候，dynamic_cast操作才将操作数val转换为想要的Type&amp;类型。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> Base &amp;b)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">const</span> Derived &amp;d = <span class="keyword">dynamic_cast</span>&lt;<span class="keyword">const</span> Derived&amp;&gt; (b);</div><div class="line">    <span class="comment">//use the Derived object to which b referred</span></div><div class="line">  &#125;<span class="keyword">catch</span> (bad_cast) &#123;</div><div class="line">    <span class="comment">// handle the fact that the cast failed</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
