@@ -111,7 +111,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/09/09/C-plus-plus运行时类型识别/index.html">
 <meta property="og:site_name" content="orange">
 <meta property="og:description" content="运行时类型识别运行时类型识别：通过运行时类型识别（RTTI），程序能够使用基类的指针或引用来检索这些指针或引用所指对象的实际派生类型。">
-<meta property="og:updated_time" content="2017-11-18T05:15:26.395Z">
+<meta property="og:updated_time" content="2019-02-12T13:35:44.326Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C++运行时类型识别">
 <meta name="twitter:description" content="运行时类型识别运行时类型识别：通过运行时类型识别（RTTI），程序能够使用基类的指针或引用来检索这些指针或引用所指对象的实际派生类型。">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  834
+                  838
                 </span>
               
 
@@ -430,6 +430,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">dynamic_cast</span>&lt; Type&amp; &gt; (val)</div><div class="line"><span class="comment">//这里，Type是转换的目标类型，而val是基类类型的对象。</span></div></pre></td></tr></table></figure>
 <p>只有当val实际引用一个Type类型对象，或者val是一个Type派生类型的对象的时候，dynamic_cast操作才将操作数val转换为想要的Type&amp;类型。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">(<span class="keyword">const</span> Base &amp;b)</span></span></div><div class="line">&#123;</div><div class="line">  <span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">const</span> Derived &amp;d = <span class="keyword">dynamic_cast</span>&lt;<span class="keyword">const</span> Derived&amp;&gt; (b);</div><div class="line">    <span class="comment">//use the Derived object to which b referred</span></div><div class="line">  &#125;<span class="keyword">catch</span> (bad_cast) &#123;</div><div class="line">    <span class="comment">// handle the fact that the cast failed</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>未完待续。。。</p>
 
       
     </div>
@@ -696,7 +697,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
