@@ -115,7 +115,7 @@
 ​                                ——七堇年  《尘曲》">
 <meta property="og:image" content="http://ww1.sinaimg.cn/mw690/0061R8y0ly1fg4bror2ekj31hc0xctbx.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/0061R8y0ly1fe4ongf67bj30e0092gm9.jpg">
-<meta property="og:updated_time" content="2017-11-08T12:43:42.228Z">
+<meta property="og:updated_time" content="2019-02-24T06:27:01.873Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C_plus_plus学习">
 <meta name="twitter:description" content="心之所向 素履以往 生如逆旅 一苇以航
@@ -399,7 +399,7 @@
                   <span class="post-meta-item-text">字数统计</span>
                 
                 <span title="字数统计">
-                  1,751
+                  2,109
                 </span>
               
 
@@ -415,7 +415,7 @@
                   <span class="post-meta-item-text">阅读时长</span>
                 
                 <span title="阅读时长">
-                  6
+                  8
                 </span>
               
             </div>
@@ -521,8 +521,23 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">extern &quot;C&quot; void f1(void(*) (int));</div></pre></td></tr></table></figure>
 <p>因为链接指示应用于一个声明中的所以函数，所以必须使用类型别名，以便将C函数的指针传递给C++函数：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">extern &quot;C&quot; typedef void FC(int);</div><div class="line">void f2(FC *);</div></pre></td></tr></table></figure>
-<p>​</p>
 </li>
+</ul>
+<p><strong>全局变量重复定义</strong></p>
+<ul>
+<li>在a.h中定义了一个全局变量： int  g_nVarible;</li>
+<li>当在另外两个文件b.cpp和c.cpp中引用头文件a.h，使用全局变量g_nVarible时会出现错误error LNK 1169: 找到一个或多个多重定义的符号。错误原因： 因为全局变量是在a.h中的定义包含一次这个头文件，相当于又进行了一次全局变量的定义；</li>
+<li>正确的书写方式：使用extern关键字，在a.h中声明全局变量g_nVarible，可以在b.cpp中定义全局变量g_nVarible，在c.cpp中不需要进行定义，只需包含头文件a.h。extern关键字告诉编译器这个变量在别处已经定义，无需进行重新的定义；</li>
+</ul>
+<p><strong>fwrite函数写入0x0A时出现错误</strong></p>
+<ul>
+<li>以文本方式打开文件fopen(filepath, “a”),使用fwrite函数进行16进制数据写入的时候，遇到当写入值是0x0A时，其前面总会被加上0x0D；</li>
+<li>问题原因：在fwrite以文本方式写文件时，碰到0x0A时会自动在前面加上0x0D，以构成回车换行符，Linux、Windows平台的换行符默认是：0x0D   0x0A；</li>
+<li>解决方法： 以二进制方式打开文件，进行写文件操作,fopen(filepath, “a + b”);</li>
+</ul>
+<p><strong>释放内存出现HEAP CORRUPTION DETECTED 错误</strong></p>
+<ul>
+<li>使用分配的空间越界，导致释放内存的时候出错；</li>
 </ul>
 
       
